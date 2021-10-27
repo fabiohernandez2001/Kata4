@@ -7,30 +7,15 @@ import kata4.model.*;
 import kata4.view.*;
 
 public class Kata4 {
-    MailListReader R;
-    MailHistogramBuilder B;
-    Histogram <String> histogram;
-    List<Mail> mailList;
-    private void input() throws IOException{
-        R= new MailListReader();
-        mailList=R.read("email.txt.txt");
+       public static void main(String[] args) throws IOException {
+       MailListReader R= new MailListReader();
+       String filename = "/Users/Entrar/Documents/NetBeansProjects/Kata4/email.txt.txt";
+       MailHistogramBuilder B= new MailHistogramBuilder();
+       List<Mail> maiList=R.read(filename);
+       Histogram <String> histogram= B.build(maiList);
+       HistogramDisplay histogramDisplay= new HistogramDisplay(histogram);
+       histogramDisplay.execute();
     }
-    private void process(){
-       B= new MailHistogramBuilder();
-       histogram= B.build(mailList);
-    }
-    private void output(){
-        HistogramDisplay histogramDisplay= new HistogramDisplay(histogram);
-        histogramDisplay.execute();
-    }
-    private void execute() throws IOException{
-        input();
-        process();
-        output();
-    }
-    public static void main(String[] args) throws IOException {
-       Kata4 katasex= new Kata4();
-       katasex.execute();
-    }
-    
+
 }
+    
